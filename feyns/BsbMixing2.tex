@@ -1,0 +1,42 @@
+\documentclass{standalone}
+\usepackage{axodraw2}
+\usepackage{ifthen}
+\newboolean{uprightparticles}
+\setboolean{uprightparticles}{false}
+\newboolean{pdflatex}
+\setboolean{pdflatex}{true}
+\input{lhcb-symbols-def}
+\begin{document}
+\begin{axopicture}(190,140)
+
+  % A meson                         
+  \Text(40,92)[lb]{$\bquark$}       % quark Label
+  \Line[arrow](35,90)(75,90)        % quark Line
+  \Text(40,48)[lt]{$\squarkbar$}    % anti-quark Label
+  \Line[arrow](75,50)(35,50)        % anti-quark Line
+  \Text(28,70)[r]{$\Bsb$}           % Label
+  \GOval(35,70)(5,20)(90){0.7}      % Bound State
+                                    
+  % Box                             
+                                    % W Top Label
+  \Photon(115,90)(75,90){4}{4}      % W Top Box Line
+                                    % W Bottom Label
+  \Photon(75,50)(115,50){4}{4}      % W Bottom Box Line
+                                    % q Left Label
+  \Line[arrow](75,90)(75,50)        % q Left Box Line
+                                    % q Right Label
+  \Line[arrow](115,50)(115,90)      % q Right Box Line
+  \Vertex(75,90){2}                 % Top Left Vertex
+  \Vertex(115,90){2}                % Top Right Vertex
+  \Vertex(75,50){2}                 % Bottom Left Vertex
+  \Vertex(115,50){2}                % Bottom Right Vertex
+  % Abar meson                      
+  \Text(150,92)[rb]{$\squark$}      % quark Label
+  \Line[arrow](115,90)(155,90)      % quark Line
+  \Text(150,48)[rt]{$\bquarkbar$}   % anti-quark Label
+  \Line[arrow](155,50)(115,50)      % anti-quark Line
+  \Text(162,70)[l]{$\Bs$}           % Label
+  \GOval(155,70)(5,20)(90){0.7}     % Bound State
+                                    
+\end{axopicture}
+\end{document}
