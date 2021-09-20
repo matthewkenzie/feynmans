@@ -1,0 +1,49 @@
+\documentclass{standalone}
+\usepackage{axodraw2}
+\usepackage{ifthen}
+\newboolean{uprightparticles}
+\setboolean{uprightparticles}{false}
+\newboolean{pdflatex}
+\setboolean{pdflatex}{true}
+\input{lhcb-symbols-def}
+\begin{document}
+\begin{axopicture}(190,140)
+
+  % A meson                                      
+                                                 % anti-quark Label
+  \Line[arrow](85,90)(25,90)                     % anti-quark Line
+                                                 % quark Label
+  \Line[arrow](25,50)(85,50)                     % quark Line
+                                                 % Label
+  \GOval(25,70)(5,20)(90){0.7}                   % Bound State
+                                                 
+  % Loop                                         
+                                                 % W Label
+  \PhotonArc(108,86)(23,171,312){-3}{8}          % W Line
+                                                 % fermion Label
+  \Arc[arrow,arrowpos=0.65](102,74)(23,350,45)   % fermion Line1
+  \Arc[arrow,arrowpos=0.55](102,74)(23,45,135)   % fermion Line2
+  \Vertex(85,90){2}                              % Start Vertex
+  \Vertex(125,70){2}                             % End Vertex
+  % Gluon                                        
+  \Gluon(113,95)(135,110){-3.5}{3}               % gluon Line
+  \Vertex(113,95){2}                             % Start Vertex
+  \Vertex(135,110){2}                            % End Vertex
+  % B meson                                      
+                                                 % anti-quark Label
+  \Line[arrow](165,130)(135,110)                 % anti-quark Line
+                                                 % quark Label
+  \Line[arrow](135,110)(165,90)                  % quark Line
+                                                 % Label
+  \GOval(165,110)(5,20)(90){0.7}                 % Bound State
+                                                 
+  % C meson                                      
+                                                 % anti-quark Label
+  \Line[arrow](165,50)(125,70)                   % anti-quark Line
+                                                 % quark Label
+  \Line[arrow](85,50)(165,10)                    % quark Line
+                                                 % Label
+  \GOval(165,30)(5,20)(90){0.7}                  % Bound State
+                                                 
+\end{axopicture}
+\end{document}
