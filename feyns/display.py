@@ -17,6 +17,6 @@ with open('README.md','w') as f:
   f.write('The following diagrams are available in this directory in .tex, .png and .pdf format.\n\n')
 
   for png in pngs:
-    f.write('- `{}`\n'.format(png.replace('.png','')))
-    f.write('  ![image]({})\n'.format(png))
+    f.write('- [`{}`]({})\n\n'.format(png.replace('.png',''),png.replace('.png','.pdf')))
+    f.write('  ![image]({})\n\n'.format(png))
 
