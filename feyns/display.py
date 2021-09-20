@@ -9,7 +9,7 @@ def convert(fname):
 for f in glob('*.pdf'):
   convert(f)
 
-pngs = glob('*.png')
+pngs = sorted(glob('*.png'))
 
 with open('README.md','w') as f:
   f.write('# List of diagrams already available\n\n')
