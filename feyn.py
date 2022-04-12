@@ -614,3 +614,64 @@ class mixing2(feyn):
 
     # Write it
     self.write()
+
+class loop_external_quark(feyn):
+  def __init__(self,
+               A_quark = None, B_quark = None, C_fermions = (None,None),
+               W_label = None,
+               loop_label = None,
+               anti_at_top = True,
+               **kwargs
+               ):
+    super().__init__(**kwargs)
+    """
+    Draw Feynman diagram (by making axodraw .tex file) for loop decay of A -> BC
+    A_quark  : text label for A quark (default: None draws nothing)
+    B_quark  : text label for B quark (default: None draws nothing)
+    C_fermions : text labels for C fermions, should be two element list or tuple,
+               where the first item is the top most (default: None draws nothing)
+    W_label  : text label for the W (default: None draws nothing)
+    loop_label  : text label for the fermion in the loop (default: None draws nothing)
+    anti_at_top : draw anti-fermion as the top line and fermion as the bottom line (default: True)
+    """
+    self.aq = 'anti-quark' if anti_at_top else 'quark'
+    self.qq = 'quark' if anti_at_top else 'anti-quark'
+
+    # A quark
+    self.add_element( '% A quark' )
+    self.add_element( self.text(23,90,A_quark,align='r'), f'% {self.aq} Label' )
+    self.add_element( self.fermion((64,90),(25,90),reverse=not anti_at_top ), f'% {self.aq} Line' )
+    self.add_element( '' )
+
+    # Loop
+    self.add_element( '% Loop' )
+    self.add_element( self.text(80,115,W_label), '% W Label' )
+    self.add_element( self.photon_arc((87,87),23,35,173,-2,7), '% W Line' )
+    self.add_element( self.text(83,88,loop_label), '% fermion Label' )
+    self.add_element( self.fermion_arc((83,103),23,355,290,reverse=not anti_at_top, opts=['clockwise','arrowpos=0.4']), '% fermion Line1')
+    self.add_element( self.fermion_arc((83,103),23,290,215,reverse=not anti_at_top, opts=['clockwise','arrowpos=0.4']), '% fermion Line2')
+    self.add_element( self.vertex(64,90), '% Start Vertex')
+    self.add_element( self.vertex(106,100.5), '% End Vertex')
+    # Gluon
+    self.add_element( '% Gluon' )
+    self.add_element( self.gluon((97,84),(125,70),-3.5,3), '% gluon Line')
+    self.add_element( self.vertex(125,70), '% Start Vertex')
+    self.add_element( self.vertex(97,84), '% End Vertex')
+
+    # B quark
+    self.add_element( '% B quark' )
+    self.add_element( self.text(167,130,B_quark,align='l'), f'% {self.aq} Label' )
+    self.add_element( self.fermion((165,130),(106,100.5),reverse=not anti_at_top ), f'% {self.aq} Line' )
+    self.add_element( '' )
+
+    # C fermions
+    self.add_element( '% C fermions' )
+    self.add_element( self.text(167,90,C_fermions[0],align='l'), f'% {self.qq} Label' )
+    self.add_element( self.fermion((125,70),(165,90),reverse=not anti_at_top ), f'% {self.qq} Line' )
+    self.add_element( self.text(167,50,C_fermions[1],align='l'), f'% {self.aq} Label' )
+    self.add_element( self.fermion((165,50),(125,70),reverse=not anti_at_top ), f'% {self.aq} Line' )
+    self.add_element( '' )
+
+    # Write it
+    self.write()
+

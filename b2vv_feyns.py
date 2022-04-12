@@ -1,7 +1,37 @@
 import os
 os.system('mkdir -p feyns')
-from feyn import tree_internal, loop_internal, loop_external
+from feyn import tree_internal, loop_internal, loop_external, loop_external_quark
+import sys
 
+# b -> s ll
+dec = loop_external_quark(
+    A_quark = r'$\bquark$',
+    B_quark = r'$\squark$',
+    C_fermions = (r'$\ellp$',r'$\ellm$'),
+    W_label = r'\small{$\Wm$}',
+    loop_label = r'$\uquark, \cquark, \tquark$',
+    anti_at_top = False,
+    dx = -10,
+    dy = -40,
+    width = 170,
+    height = 100,
+    fname = 'feyns/b2sll' )
+
+# b ->s qq
+dec = loop_external_quark(
+    A_quark = r'$\bquark$',
+    B_quark = r'$\squark$',
+    C_fermions = (r'$\quarkbar$',r'$\quark$'),
+    W_label = r'\small{$\Wm$}',
+    loop_label = r'$\uquark, \cquark, \tquark$',
+    anti_at_top = False,
+    dx = -10,
+    dy = -40,
+    width = 170,
+    height = 100,
+    fname = 'feyns/b2sqq' )
+
+input()
 # B0 -> Kst Kstb
 dec = loop_external(
     A_label=r'$\Bd$',
@@ -11,6 +41,7 @@ dec = loop_external(
     C_label=r'$\Kstarz$',
     C_quarks=(r'$\squarkbar$',r'$\dquark$'),
     W_label = r'\small{$\Wp$}',
+    loop_label = r'$\uquarkbar, \cquarkbar, \tquarkbar$',
     fname='feyns/Bd2KstKst' )
 
 # B0b -> Kst Kstb
@@ -22,6 +53,7 @@ dec = loop_external(
     C_label=r'$\Kstarzb$',
     C_quarks=(r'$\squark$',r'$\dquarkbar$'),
     W_label = r'\small{$\Wm$}',
+    loop_label = r'$\uquark, \cquark, \tquark$',
     anti_at_top = False,
     fname='feyns/Bdb2KstKst' )
 
@@ -34,6 +66,7 @@ dec = loop_external(
     C_label=r'$\Kstarzb$',
     C_quarks=(r'$\dquarkbar$',r'$\squark$'),
     W_label = r'\small{$\Wp$}',
+    loop_label = r'$\uquarkbar, \cquarkbar, \tquarkbar$',
     fname='feyns/Bs2KstKst' )
 
 # Bs0b -> Kst Kstb
@@ -45,6 +78,7 @@ dec = loop_external(
     C_label=r'$\Kstarz$',
     C_quarks=(r'$\dquark$',r'$\squarkbar$'),
     W_label = r'\small{$\Wm$}',
+    loop_label = r'$\uquark, \cquark, \tquark$',
     anti_at_top = False,
     fname='feyns/Bsb2KstKst' )
 

@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{axodraw2}
+\usepackage{ifthen}
+\newboolean{uprightparticles}
+\setboolean{uprightparticles}{false}
+\newboolean{pdflatex}
+\setboolean{pdflatex}{true}
+\input{lhcb-symbols-def}
+\begin{document}
+\begin{axopicture}(170,100)
+
+  % A quark                                      
+  \Text(13,50)[r]{$\bquark$}                     % quark Label
+  \Line[arrow](15,50)(54,50)                     % quark Line
+                                                 
+  % Loop                                         
+  \Text(70,75){\small{$\Wm$}}                    % W Label
+  \PhotonArc(77,47)(23,35,173){-2}{7}            % W Line
+  \Text(73,48){$\uquark, \cquark, \tquark$}      % fermion Label
+  \Arc[arrow,arrowpos=0.60](73,63)(23,290,355)   % fermion Line1
+  \Arc[arrow,arrowpos=0.60](73,63)(23,215,290)   % fermion Line2
+  \Vertex(54,50){2}                              % Start Vertex
+  \Vertex(96,60.5){2}                            % End Vertex
+  % Gluon                                        
+  \Gluon(87,44)(115,30){-3.5}{3}                 % gluon Line
+  \Vertex(115,30){2}                             % Start Vertex
+  \Vertex(87,44){2}                              % End Vertex
+  % B quark                                      
+  \Text(157,90)[l]{$\squark$}                    % quark Label
+  \Line[arrow](96,60.5)(155,90)                  % quark Line
+                                                 
+  % C fermions                                   
+  \Text(157,50)[l]{$\quarkbar$}                  % anti-quark Label
+  \Line[arrow](155,50)(115,30)                   % anti-quark Line
+  \Text(157,10)[l]{$\quark$}                     % quark Label
+  \Line[arrow](115,30)(155,10)                   % quark Line
+                                                 
+\end{axopicture}
+\end{document}
